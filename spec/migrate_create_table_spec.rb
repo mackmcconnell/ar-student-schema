@@ -14,11 +14,11 @@ describe "create table with correct schema" do
   it "should have the right columns and types" do
     expected = {
       :integer => ["id"],
-      :string => ["first_name", "last_name", "gender", "email", "phone"],
+      :string => ["first_name", "last_name", "gender", "email", "phone", "address"],
       :date => ["birthday"]
     }
 
-    ActiveRecord::Base.connection.columns(:students).each do |col|
+    puts ActiveRecord::Base.connection.columns(:students).each do |col|
       expected[col.type].include?(col.name).should be_true
     end
   end
